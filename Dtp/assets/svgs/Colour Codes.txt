@@ -1,0 +1,5 @@
+Blue Colour : #272264
+Grety Background Colour : #F4F6F9
+Red Colour : #FF0000
+Green Colour : #0BB116
+Greyb Button colour : #D8D7D7
