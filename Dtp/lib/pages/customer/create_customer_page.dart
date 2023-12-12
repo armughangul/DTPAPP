@@ -8,6 +8,8 @@ import 'package:decisive_technology_products/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../s.dart';
+import '../../services/HttpCalls.dart';
+import '../../utils/get_images.dart';
 
 class CreateCustomerPage extends GetView<CreateCustomerController> {
   final CustomerModel? customer;
@@ -110,6 +112,16 @@ class PageOne extends StatelessWidget {
                       focusNode: controller.registrationFocus,
                       onEditingComplete: controller.pageOneNext,
                     ),
+                    S.sDivider(),
+                    controller.customer != null &&
+                            controller.customer!.document != null &&
+                            controller.customer!.document != ""
+                        ? GetImage(
+                            height: 170,
+                            imagePath:
+                                '${HttpCalls.sStorageURL}${controller.customer!.document}',
+                          )
+                        : S.sDivider()
                   ],
                 ),
               ),

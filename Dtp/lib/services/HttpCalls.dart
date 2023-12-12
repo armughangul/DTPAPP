@@ -222,10 +222,15 @@ class HttpCalls {
         request.fields.addAll(params);
       }
       print(files);
-      files.entries.forEach((element) async {
-        request.files
-            .add(await MultipartFile.fromPath(element.key, element.value));
-      });
+      if (files.length > 0) {
+        MultipartFile file = await MultipartFile.fromPath(
+            files.entries.first.key, files.entries.first.value);
+        request.files.add(file);
+      }
+      // files.entries.forEach((element) async {
+      //   request.files
+      //       .add(await MultipartFile.fromPath(element.key, element.value));
+      // });
       var streamedResponse = await request.send();
       var result = await Response.fromStream(streamedResponse);
       print(result.body);

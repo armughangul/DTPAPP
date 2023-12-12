@@ -73,21 +73,21 @@ class CreateSalesManController extends GetxController {
   }
 
   fillData() {
-    engName.text = S.sObjLogin!.user!.name;
-    thaiName.text = S.sObjLogin!.user!.thaiName;
-    phone.text = S.sObjLogin!.user!.phone;
-    thaiIdNumber.text = S.sObjLogin!.user!.thaiIdNumber;
-    buildingName.text = S.sObjLogin!.user!.buildingName;
-    streetNumber1.text = S.sObjLogin!.user!.streetNumber1;
-    streetNumber2.text = S.sObjLogin!.user!.streetNumber2;
-    subDistrict.text = S.sObjLogin!.user!.subDistrict;
-    district.text = S.sObjLogin!.user!.district;
-    province.text = S.sObjLogin!.user!.province;
-    postalCode.text = S.sObjLogin!.user!.postalCode;
-    lineId.text = S.sObjLogin!.user!.lineId;
-    bankName.text = S.sObjLogin!.user!.bankName;
-    bankBranch.text = S.sObjLogin!.user!.bankBranch;
-    bankAccount.text = S.sObjLogin!.user!.bankAccount;
+    engName.text = S.sObjLogin!.user!.name ?? "";
+    thaiName.text = S.sObjLogin!.user!.thaiName ?? "";
+    phone.text = S.sObjLogin!.user!.phone ?? "";
+    thaiIdNumber.text = S.sObjLogin!.user!.thaiIdNumber ?? "";
+    buildingName.text = S.sObjLogin!.user!.buildingName ?? "";
+    streetNumber1.text = S.sObjLogin!.user!.streetNumber1 ?? "";
+    streetNumber2.text = S.sObjLogin!.user!.streetNumber2 ?? "";
+    subDistrict.text = S.sObjLogin!.user!.subDistrict ?? "";
+    district.text = S.sObjLogin!.user!.district ?? "";
+    province.text = S.sObjLogin!.user!.province ?? "";
+    postalCode.text = S.sObjLogin!.user!.postalCode ?? "";
+    lineId.text = S.sObjLogin!.user!.lineId ?? "";
+    bankName.text = S.sObjLogin!.user!.bankName ?? "";
+    bankBranch.text = S.sObjLogin!.user!.bankBranch ?? "";
+    bankAccount.text = S.sObjLogin!.user!.bankAccount ?? "";
   }
 
   void pageOneNext() {

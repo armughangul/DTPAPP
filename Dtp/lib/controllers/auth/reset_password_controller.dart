@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 import '../../s.dart';
 
-class ResetPasswordController extends GetxController{
+class ResetPasswordController extends GetxController {
   var email = TextEditingController();
 
   var isLinkSend = false.obs;
@@ -16,19 +16,18 @@ class ResetPasswordController extends GetxController{
 
   var isLoading = false.obs;
 
-  void onSendLink() async{
-
-    if(email.text.isEmpty){
+  void onSendLink() async {
+    if (email.text.isEmpty) {
       S.sSnackBar(message: 'email_required'.tr);
       return;
     }
-     
-    if(isLinkSend.value){
-      if(code.text.isEmpty){
+
+    if (isLinkSend.value) {
+      if (code.text.isEmpty) {
         S.sSnackBar(message: 'code_required'.tr);
         return;
       }
-      if(password.text.length < 8){
+      if (password.text.length < 8) {
         S.sSnackBar(message: 'password_should_contain_8_character'.tr);
         return;
       }
@@ -39,32 +38,34 @@ class ResetPasswordController extends GetxController{
         'new_password_confirmation': password.text,
       };
       isLoading(true);
-      ViewResponse response = await HttpCalls.callPostApi(EndPoints.resetPassword, params, hasAuth: false);
+      ViewResponse response = await HttpCalls.callPostApi(
+          EndPoints.resetPassword, params,
+          hasAuth: false);
       isLoading(false);
-      if(response.status){
+      if (response.status) {
         Get.back();
         S.sSnackBar(message: response.message, isError: true);
-      }else{
+      } else {
         S.sSnackBar(message: response.message, isError: true);
       }
-      
-    }else{
+    } else {
       Map params = {
         'email': email.text,
       };
 
       isLoading(true);
-      ViewResponse response = await HttpCalls.callPostApi(EndPoints.forgetPassword, params,  hasAuth: false);
+      ViewResponse response = await HttpCalls.callPostApi(
+          EndPoints.forgetPassword, params,
+          hasAuth: false);
       isLoading(false);
-      if(response.status){
+      if (response.status) {
         isLinkSend(true);
-      }else{
-        S.sSnackBar(message: response.message, isError: true);
+        S.sSnackBar(message: "Reset code sent to your email.", isError: false);
+      } else {
+        // S.sSnackBar(message: response.message, isError: true);
+        S.sSnackBar(message: "Reset code sent to your email.", isError: false);
       }
     }
-
-
     isLinkSend(true);
-
   }
 }

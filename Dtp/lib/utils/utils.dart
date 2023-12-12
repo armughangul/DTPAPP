@@ -3,26 +3,22 @@ import 'dart:ui' show Color;
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-
 class Clr {
   Clr._();
 
   static const Color colorTransparent = const Color(0x00000000);
 
-
   static const Color colorBlue = Color(0xFF272264);
-  static const Color colorGreyBackground  = Color(0xFFF4F6F9);
-  static const Color colorGreyButton  = Color(0xFFD8D7D7);
-  static const Color colorRed  = Color(0xFFFF0000);
-  static const Color colorRedPrimary  = Color(0xFFed1c24);
-  static const Color colorGreen  = Color(0xFF0BB116);
+  static const Color colorGreyBackground = Color(0xFFF4F6F9);
+  static const Color colorGreyButton = Color(0xFFD8D7D7);
+  static const Color colorRed = Color(0xFFFF0000);
+  static const Color colorRedPrimary = Color(0xFFed1c24);
+  static const Color colorGreen = Color(0xFF0BB116);
   static const Color colorPrimary = colorRedPrimary;
   static const Color colorSecondary = Color(0xFF933086);
-
 }
 
 class Siz {
-
   Siz._();
   static const double h0 = 100.0;
   static const double h1 = 40.0;
@@ -51,20 +47,18 @@ class Str {
 
   static var mobileVerification = 'Mobile Number Verification';
 
-  static var mobileVerificationBody = 'A verification will be sent your number. You can update the mobile number before this verification. ';
+  static var mobileVerificationBody =
+      'A verification will be sent your number. You can update the mobile number before this verification. ';
 
-  static var mask500 = "####################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################";
+  static var mask500 =
+      "####################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################";
 
   static var nameInValid = 'Valid characters \n A-Z a-z\n . , -';
   static var areaInValid = 'Valid characters are: \n A-Z a-z 0-9\n . , - #';
 
-  static String swr(id)=> 'Something went wrong \n error code $id';
-
-
-
+  static String swr(id) => 'Something went wrong \n error code $id';
 
   Str._();
-
 }
 
 class EndPoints {
@@ -87,8 +81,7 @@ class EndPoints {
 
   static String messages = 'messages';
   static String getPayments = 'orders/get_payments/';
-
-
+  static String delete = "deleteAccount";
 
   EndPoints._();
 }

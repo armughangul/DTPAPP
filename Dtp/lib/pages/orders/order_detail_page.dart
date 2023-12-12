@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:decisive_technology_products/controllers/orders/order_detail_controller.dart';
 import 'package:decisive_technology_products/models/order_model/order_model.dart';
 import 'package:decisive_technology_products/services/HttpCalls.dart';
@@ -357,9 +359,16 @@ class UpdatePage extends StatelessWidget {
           ),
           if (controller.order.invoicePicture != "") ...[
             S.sDivider(),
-            GetImage(
-              imagePath:
-                  '${HttpCalls.sStorageURL}${controller.order.invoicePicture}',
+            Obx(
+              () => controller.isNewFile.isTrue
+                  ? Image.file(
+                      File(controller.file!.path),
+                      fit: BoxFit.cover,
+                    )
+                  : GetImage(
+                      imagePath:
+                          '${HttpCalls.sStorageURL}${controller.order.invoicePicture}',
+                    ),
             ),
           ],
           S.sDivider(),

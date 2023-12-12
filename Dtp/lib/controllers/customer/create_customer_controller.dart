@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../s.dart';
+import '../../utils/CommonManager.dart';
 
 class CreateCustomerController extends GetxController {
   final CustomerModel? customer;
@@ -265,8 +266,7 @@ class CreateCustomerController extends GetxController {
         params: params);
     isSaving(false);
     if (response.status) {
-      Get.put(DashboardController()).onPageChange(1);
-      // Get.find<DashboardController>().onPageChange(1);
+      CommonManager.manager.controller?.onPageChange(1);
       Get.back();
     } else {
       S.sSnackBar(message: response.message, isError: true);

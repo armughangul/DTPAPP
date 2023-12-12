@@ -8,9 +8,45 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../s.dart';
+import '../../utils/get_images.dart';
 
 class DashboardPage extends GetView<DashboardController> {
   final controller = Get.put(DashboardController());
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("NO"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget noButton = TextButton(
+      child: Text("YES"),
+      onPressed: () async {
+        Navigator.of(context).pop();
+        bool isDelete = await controller.onAccountDelete();
+        if (isDelete) {
+          S.sLogout();
+        }
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(""),
+      content: Text("Are you sure you want to delete your account"),
+      actions: [okButton, noButton],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,31 +187,72 @@ class DashboardPage extends GetView<DashboardController> {
                 // Txt('Sales Man', hasBold: true,size: Siz.h2,onTap: ()=> controller.onPageChange(8)),
 
                 Spacer(),
-                GestureDetector(
-                  onTap: S.sLogout,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: S.sBoxDecoration(
-                        radius: 10, filledColor: Clr.colorPrimary),
-                    child: Column(
-                      children: [
-                        RotatedBox(
-                          quarterTurns: 90,
-                          child: Icon(
-                            Icons.exit_to_app_rounded,
-                            size: 40,
-                            color: Colors.white,
-                          ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: S.sLogout,
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: S.sBoxDecoration(
+                            radius: 10, filledColor: Colors.black),
+                        child: Column(
+                          children: [
+                            RotatedBox(
+                              quarterTurns: 90,
+                              child: Icon(
+                                Icons.exit_to_app_rounded,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Txt(
+                              'logout'.tr,
+                              hasBold: true,
+                              textColor: Colors.white,
+                            )
+                          ],
                         ),
-                        Txt(
-                          'logout'.tr,
-                          hasBold: true,
-                          textColor: Colors.white,
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                )
+                    Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        showAlertDialog(context);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: S.sBoxDecoration(
+                            radius: 10, filledColor: Clr.colorPrimary),
+                        child: Column(
+                          children: [
+                            RotatedBox(
+                              quarterTurns: 0,
+                              child: GetImage(
+                                imagePath: 'assets/images/bin.png',
+                                isAssets: true,
+                                height: 40,
+                                width: 40,
+                                fit: BoxFit.contain,
+                                imageColor: Colors.white,
+                                onTap: () => () {},
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Txt(
+                              'deleteAcc'.tr,
+                              hasBold: true,
+                              textColor: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
           ),

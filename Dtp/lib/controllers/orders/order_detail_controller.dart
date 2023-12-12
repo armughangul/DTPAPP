@@ -37,6 +37,7 @@ class OrderDetailController extends GetxController {
   var selectedMoneyReceivedStatus = 0.obs;
 
   var isSaving = false.obs;
+  var isNewFile = false.obs;
 
   var filter = 0.obs;
 
@@ -112,9 +113,11 @@ class OrderDetailController extends GetxController {
     if (result) {
       file = await ImagePicker().pickImage(source: ImageSource.camera);
       attachment.text = file!.name;
+      isNewFile(true);
     } else {
       file = await ImagePicker().pickImage(source: ImageSource.gallery);
       attachment.text = file!.name;
+      isNewFile(true);
     }
   }
 

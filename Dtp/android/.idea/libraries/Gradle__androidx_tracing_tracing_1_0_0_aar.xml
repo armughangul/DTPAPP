@@ -2,7 +2,6 @@
   <library name="Gradle: androidx.tracing:tracing:1.0.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/666b4af88c3257f0f5f5b85c95dd881f/transformed/jetified-tracing-1.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/666b4af88c3257f0f5f5b85c95dd881f/transformed/jetified-tracing-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/666b4af88c3257f0f5f5b85c95dd881f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />

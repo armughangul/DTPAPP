@@ -11,7 +11,10 @@ import 'package:decisive_technology_products/pages/sales_man/create_sales_man_pa
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
 
+import '../../models/response_model.dart';
 import '../../s.dart';
+import '../../services/HttpCalls.dart';
+import '../../utils/utils.dart';
 
 class DashboardController extends GetxController {
   final advancedDrawerController = AdvancedDrawerController();
@@ -92,6 +95,18 @@ class DashboardController extends GetxController {
       return Future.value(true);
     } else {
       return Future.value(false);
+    }
+  }
+  //API CALL FOR DELETE
+
+  Future<bool> onAccountDelete() async {
+    ViewResponse response =
+        await HttpCalls.callDeleteApi(EndPoints.delete, null);
+    if (response.status) {
+      return true;
+    } else {
+      S.sSnackBar(message: response.message, isError: true);
+      return false;
     }
   }
 }

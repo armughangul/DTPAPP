@@ -118,12 +118,16 @@ class NtfController extends GetxController {
         userOrderMap.entries.forEach(
           (element) {
             final today = DateTime.now();
-            int minutes1 = today.difference(element.value.createdAt!).inMinutes;
-            if (minutes1 >= 2) {
+            final secondDate = element.value.createdAt!;
+            // int minutes1 = today.difference(element.value.createdAt!).inDays;
+            final monthsDifference = (today.year - secondDate.year) * 12 +
+                today.month -
+                secondDate.month;
+            print(monthsDifference);
+            if (monthsDifference >= 2) {
               String name = element.value.customer?.nameEnglish ?? "";
               list2.add(new Message(
-                  message:
-                      'Your customer $name did not order from last 2 mints',
+                  message: "yourCustomer".tr + ' $name ' + "didNotOrder".tr,
                   createdAt: element.value.createdAt));
             }
           },
